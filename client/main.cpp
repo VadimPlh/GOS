@@ -55,7 +55,8 @@ int main(int argc, char* argv[]) {
             std::cout.write(data, length);
             std::cout << "\n";
 
-            if (std::string(data, length) == "Error! Only 10 attempts") {
+            std::string ans = std::string(data, length);
+            if (ans.find("Error! Only") != std::string::npos) {
                 s.close();
                 return(0);
             }
