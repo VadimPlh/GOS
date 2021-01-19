@@ -40,6 +40,10 @@ int main(int argc, char* argv[]) {
             char request[max_length];
             std::cin.getline(request, max_length);
             size_t request_length = std::strlen(request);
+            if (request_length == 0) {
+                std::cout << "Request length can not be zero-length" << std::endl;
+                continue;
+            }
             boost::asio::write(s, boost::asio::buffer(request, request_length));
 
             size_t length = s.read_some(boost::asio::buffer(data), error);
